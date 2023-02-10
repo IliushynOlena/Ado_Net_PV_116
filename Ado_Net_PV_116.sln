@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01_ConnectedMode", "01_Conn
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02_ConnectedModeCRUD", "02_ConnectedModeCRUD\02_ConnectedModeCRUD.csproj", "{C8DD1854-6F81-4774-9FD1-8721C47EDA8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wpf_client", "wpf_client\wpf_client.csproj", "{6D1A6651-A682-453F-90FF-9D0C989F8CFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wpf_client", "wpf_client\wpf_client.csproj", "{6D1A6651-A682-453F-90FF-9D0C989F8CFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "data_access", "data_access\data_access.csproj", "{5E50698F-4B16-4FEC-A94B-3C27AE28F88C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "data_access", "data_access\data_access.csproj", "{5E50698F-4B16-4FEC-A94B-3C27AE28F88C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05_DisconnectedMode", "05_DisconnectedMode\05_DisconnectedMode.csproj", "{4998CA29-362E-4FDA-944A-D04A881FAD22}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{5E50698F-4B16-4FEC-A94B-3C27AE28F88C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E50698F-4B16-4FEC-A94B-3C27AE28F88C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E50698F-4B16-4FEC-A94B-3C27AE28F88C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4998CA29-362E-4FDA-944A-D04A881FAD22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4998CA29-362E-4FDA-944A-D04A881FAD22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4998CA29-362E-4FDA-944A-D04A881FAD22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4998CA29-362E-4FDA-944A-D04A881FAD22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
