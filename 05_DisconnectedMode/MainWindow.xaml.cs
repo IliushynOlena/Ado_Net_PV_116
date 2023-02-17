@@ -40,7 +40,7 @@ namespace _05_DisconnectedMode
         {
             try
             {
-                string sql = commandTextBox.Text;
+                string sql = commandTextBox.Text;//select * from Products
 
                 da = new SqlDataAdapter(sql, conn);
 
