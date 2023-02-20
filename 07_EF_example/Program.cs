@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _07_EF_example.Entities;
+using System;
 using System.Linq;
 
 namespace _07_EF_example
