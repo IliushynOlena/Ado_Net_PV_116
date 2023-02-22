@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _07_EF_example;
 
 namespace _07_EF_example.Migrations
 {
     [DbContext(typeof(AirplaneDbContext))]
-    partial class AirplaneDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230222162015_AddLimitToModel")]
+    partial class AddLimitToModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
