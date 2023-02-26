@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace _07_EF_example
 {
-    internal class AirplaneDbContext : DbContext
+    public class AirplaneDbContext : DbContext
     {
         public AirplaneDbContext()
         {
@@ -47,8 +47,8 @@ namespace _07_EF_example
 
             //Fluent API configuration
             modelBuilder.Entity<Airplane>().Property(a => a.Model)
-                .IsRequired()
-                .HasMaxLength(100);
+                .IsRequired()//not null
+                .HasMaxLength(100);//nvarchar(100)
 
             modelBuilder.Entity<Client>().ToTable("Passengers");
             modelBuilder.Entity<Client>().Property(c => c.Name)

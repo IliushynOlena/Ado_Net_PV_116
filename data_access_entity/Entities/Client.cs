@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace _07_EF_example.Entities
 {
-    class Client
+    public class Client
     {
         public int Id { get; set; }
         public string Name { get; set; }  
