@@ -17,9 +17,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06_linq_to_sql", "06_linq_t
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07_EF_example", "07_EF_example\07_EF_example.csproj", "{388D2DCA-99B7-4ABB-B80E-1C35AD9EF04B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "data_access_entity", "data_access_entity\data_access_entity.csproj", "{FC3C9205-BFE0-4DA5-9816-4EFC8494D33F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "data_access_entity", "data_access_entity\data_access_entity.csproj", "{FC3C9205-BFE0-4DA5-9816-4EFC8494D33F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08_AirportProject", "08_AirportProject\08_AirportProject.csproj", "{FFCF18A8-D279-409E-ADD2-B006B329A0B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08_AirportProject", "08_AirportProject\08_AirportProject.csproj", "{FFCF18A8-D279-409E-ADD2-B006B329A0B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09_using_repository_Pattern", "09_using_repository_Pattern\09_using_repository_Pattern.csproj", "{328ADE2A-0F60-4713-B40A-DC898F6DDAE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{FFCF18A8-D279-409E-ADD2-B006B329A0B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFCF18A8-D279-409E-ADD2-B006B329A0B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFCF18A8-D279-409E-ADD2-B006B329A0B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{328ADE2A-0F60-4713-B40A-DC898F6DDAE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{328ADE2A-0F60-4713-B40A-DC898F6DDAE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{328ADE2A-0F60-4713-B40A-DC898F6DDAE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{328ADE2A-0F60-4713-B40A-DC898F6DDAE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
