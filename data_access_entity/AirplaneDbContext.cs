@@ -29,7 +29,7 @@ namespace _07_EF_example
             base.OnConfiguring(optionsBuilder);
 
             optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-3HG9UVT\SQLEXPRESS;
-                                        Initial Catalog = SuperPuperAirplaneDbWithMirgation;
+                                        Initial Catalog = AirportDataBase;
                                         Integrated Security=True;
                                         Connect Timeout=2;Encrypt=False;
                                         TrustServerCertificate=False;
@@ -39,11 +39,7 @@ namespace _07_EF_example
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            //Initializer - Seeder
-            modelBuilder.SeedAirplanes();
-            modelBuilder.SeedFligths();
-
-        
+                  
 
             //Fluent API configuration
             modelBuilder.Entity<Airplane>().Property(a => a.Model)
@@ -77,6 +73,20 @@ namespace _07_EF_example
             modelBuilder.Entity<Flight>()
                 .HasMany(f => f.Clients)
                 .WithMany(c => c.Flights);
+
+            modelBuilder.Entity<Client>().HasKey(c => c.CredentialsId);//set primary key
+
+            modelBuilder.Entity<Client>()
+                .HasOne(c => c.Credentials)
+                .WithOne(c => c.Client)
+                .HasForeignKey<Client>(c=>c.CredentialsId);
+
+
+            //Initializer - Seeder
+            modelBuilder.SeedAirplanes();
+            modelBuilder.SeedFligths();
+            modelBuilder.SeedCredentials();
+            modelBuilder.SeedClients();
 
         }
     }

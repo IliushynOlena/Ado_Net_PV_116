@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _07_EF_example;
 
-namespace _07_EF_example.Migrations
+namespace data_access_entity.Migrations
 {
     [DbContext(typeof(AirplaneDbContext))]
-    [Migration("20230220170303_Initial")]
+    [Migration("20230227171214_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,13 +23,13 @@ namespace _07_EF_example.Migrations
 
             modelBuilder.Entity("ClientFlight", b =>
                 {
-                    b.Property<int>("ClientsId")
+                    b.Property<int>("ClientsCredentialsId")
                         .HasColumnType("int");
 
                     b.Property<int>("FlightsNumber")
                         .HasColumnType("int");
 
-                    b.HasKey("ClientsId", "FlightsNumber");
+                    b.HasKey("ClientsCredentialsId", "FlightsNumber");
 
                     b.HasIndex("FlightsNumber");
 
@@ -47,7 +47,9 @@ namespace _07_EF_example.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Model")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
@@ -70,18 +72,16 @@ namespace _07_EF_example.Migrations
 
             modelBuilder.Entity("_07_EF_example.Entities.Client", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("CredentialsId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("Birthday")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -89,9 +89,25 @@ namespace _07_EF_example.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasColumnName("FirstName");
 
-                    b.HasKey("Id");
+                    b.HasKey("CredentialsId");
 
                     b.ToTable("Passengers");
+
+                    b.HasData(
+                        new
+                        {
+                            CredentialsId = 1,
+                            Birthday = new DateTime(2000, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "victor@gmail.com",
+                            Name = "Victor"
+                        },
+                        new
+                        {
+                            CredentialsId = 2,
+                            Birthday = new DateTime(2005, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "olga@gmail.com",
+                            Name = "Olga"
+                        });
                 });
 
             modelBuilder.Entity("_07_EF_example.Entities.Flight", b =>
@@ -120,6 +136,9 @@ namespace _07_EF_example.Migrations
                     b.Property<DateTime>("DepartureTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("Rating")
+                        .HasColumnType("int");
+
                     b.HasKey("Number");
 
                     b.HasIndex("AirplaneId");
@@ -147,11 +166,46 @@ namespace _07_EF_example.Migrations
                         });
                 });
 
+            modelBuilder.Entity("data_access_entity.Entities.Credentials", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("ClientId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Login")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Credentials");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Login = "user1",
+                            Password = "1111"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Login = "user2",
+                            Password = "2222"
+                        });
+                });
+
             modelBuilder.Entity("ClientFlight", b =>
                 {
                     b.HasOne("_07_EF_example.Entities.Client", null)
                         .WithMany()
-                        .HasForeignKey("ClientsId")
+                        .HasForeignKey("ClientsCredentialsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -160,6 +214,17 @@ namespace _07_EF_example.Migrations
                         .HasForeignKey("FlightsNumber")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("_07_EF_example.Entities.Client", b =>
+                {
+                    b.HasOne("data_access_entity.Entities.Credentials", "Credentials")
+                        .WithOne("Client")
+                        .HasForeignKey("_07_EF_example.Entities.Client", "CredentialsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Credentials");
                 });
 
             modelBuilder.Entity("_07_EF_example.Entities.Flight", b =>
@@ -176,6 +241,11 @@ namespace _07_EF_example.Migrations
             modelBuilder.Entity("_07_EF_example.Entities.Airplane", b =>
                 {
                     b.Navigation("Flights");
+                });
+
+            modelBuilder.Entity("data_access_entity.Entities.Credentials", b =>
+                {
+                    b.Navigation("Client");
                 });
 #pragma warning restore 612, 618
         }
